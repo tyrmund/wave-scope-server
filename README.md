@@ -1,7 +1,7 @@
 
 # 🏝️ WAVE SCOPE 🏝️
 
-In the global context of a massive tourism, WaveWatch tries to reduce the ecological footprint with a responible visit to each beach. 
+In the global context of a massive tourism, WaveScope tries to reduce the ecological footprint with a responible visit to each beach. 
 
 
 ## API Reference
