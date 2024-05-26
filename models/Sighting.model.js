@@ -8,12 +8,12 @@ const sightingSchema = new Schema(
         'lng': String
       }
     },
-    beachId: {
+    beach: {
       type: Schema.ObjectId,
       ref: 'Beach',
       required: true
     },
-    specimenId: {
+    specimen: {
       type: Schema.ObjectId,
       ref: 'Specimen',
       required: true
