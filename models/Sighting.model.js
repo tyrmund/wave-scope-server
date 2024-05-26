@@ -18,6 +18,10 @@ const sightingSchema = new Schema(
       ref: 'Specimen',
       required: true
     },
+    user: {
+      type: Schema.ObjectId,
+      ref: 'User'
+    },
     comment: {
       type: String
     },

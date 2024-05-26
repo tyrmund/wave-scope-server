@@ -4,10 +4,10 @@ const Sighting = require('../models/Sighting.model')
 
 router.post('/', (req, res, next) => {
 
-  const { coords, beach, specimen, comment, confirmations, rejections } = req.body
+  const { coords, beach, specimen, user, comment, confirmations, rejections } = req.body
 
   Sighting
-    .create({ coords, beach, specimen, comment, confirmations, rejections })
+    .create({ coords, beach, specimen, user, comment, confirmations, rejections })
     .then(newSighting => res.json(newSighting))
     .catch(err => next(err))
 
@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
 
   Sighting
     .find()
-    .populate(['beach', 'specimen'])
+    .populate(['beach', 'specimen', 'user'])
     .then(allSightings => res.json(allSightings))
     .catch(err => next(err))
 
@@ -37,7 +37,7 @@ router.get('/:sightingId', (req, res, next) => {
 
   Sighting
     .findById(sightingId)
-    .populate(['beach', 'specimen'])
+    .populate(['beach', 'specimen', 'user'])
     .then(oneSighting => res.json(oneSighting))
     .catch(err => next(err))
 
@@ -46,11 +46,11 @@ router.get('/:sightingId', (req, res, next) => {
 router.put('/:sightingId', (req, res, next) => {
 
   const { sightingId } = req.params
-  const { coords, beach, specimen, comment, confirmations, rejections } = req.body
+  const { coords, beach, specimen, user, comment, confirmations, rejections } = req.body
 
   Sighting
-    .findByIdAndUpdate(sightingId, { coords, beach, specimen, comment, confirmations, rejections })
-    .populate(['beach', 'specimen'])
+    .findByIdAndUpdate(sightingId, { coords, beach, specimen, user, comment, confirmations, rejections })
+    .populate(['beach', 'specimen', 'user'])
     .then(updatedSighting => res.json(updatedSighting))
     .catch(err => next(err))
 

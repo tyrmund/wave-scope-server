@@ -40,7 +40,7 @@ router.post("/signup", (req, res, next) => {
             const hashedPassword = bcrypt.hashSync(password, salt);
 
             User
-                .create({ username, email, password: hashedPassword })
+                .create({ username, email, password: hashedPassword, postalCode, country })
                 .then(() => res.sendStatus(201))
                 .catch(err => next(err))
         })
