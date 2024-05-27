@@ -5,10 +5,12 @@ const sightingSchema = new Schema(
     image: {
       type: String
     },
-    coords: {
+    location: {
       type: {
-        'lat': String,
-        'lng': String
+        type: String,
+      },
+      coordinates: {
+        type: [Number]
       }
     },
     beach: {

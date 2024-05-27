@@ -3,10 +3,10 @@ const router = require('express').Router()
 const Specimen = require('./../models/Specimen.model')
 
 router.post('/', (req, res, next) => {
-  const { commonName, scientificName, mediumSize, isEndemic, habitat } = req.body
+  const { images, commonName, scientificName, mediumSize, isEndemic, habitat } = req.body
 
   Specimen
-    .create({ commonName, scientificName, mediumSize, isEndemic, habitat })
+    .create({ images, commonName, scientificName, mediumSize, isEndemic, habitat })
     .then(newSpecimen => res.status(201).json(newSpecimen))
     .catch(err => next(err))
 })
@@ -44,10 +44,10 @@ router.get('/:specimenId', (req, res, next) => {
 router.put('/:specimenId', (req, res, next) => {
 
   const { specimenId } = req.params
-  const { commonName, scientificName, mediumSize, isEndemic, habitat } = req.body
+  const { images, commonName, scientificName, mediumSize, isEndemic, habitat } = req.body
 
   Specimen
-    .findByIdAndUpdate(specimenId, { commonName, scientificName, mediumSize, isEndemic, habitat })
+    .findByIdAndUpdate(specimenId, { images, commonName, scientificName, mediumSize, isEndemic, habitat })
     .then(updatedSpecimen => res.json(updatedSpecimen))
     .catch(err => next(err))
 

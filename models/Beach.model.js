@@ -19,7 +19,7 @@ const beachSchema = new Schema(
         unique: true
       },
     },
-    transportCoords: {
+    busStopCoords: {
       type: {
         type: String
       },
