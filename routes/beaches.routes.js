@@ -4,10 +4,19 @@ const Beach = require("../models/Beach.model")
 
 router.post("/", (req, res, next) => {
 
-    const { name, coords, trasportCoords, length, composition, sectors } = req.body
+    const { images, name, latitude, longitude, transportCoords, length, composition, sectors } = req.body
+
+    const location = {
+        type: 'Point',
+        coordinates: [longitude, latitude]
+    }
+
+    const transportCoordinates = transportCoords.map(coord => {
+        const [lat, lng] = coord.split(', ').map(Number)
+    })
 
     Beach
-        .create({ name, coords, trasportCoords, length, composition, sectors })
+        .create({ images, name, location, transportCoords, length, composition, sectors })
         .then(newBeach => res.status(201).json(newBeach))
         .catch(err => next(err))
 })
@@ -43,11 +52,11 @@ router.get("/:beachId", (req, res, next) => {
 
 router.put("/:beachId", (req, res, next) => {
 
-    const { name, coords, trasportCoords, length, composition, sectors } = req.body
+    const { images, name, coords, transportCoords, length, composition, sectors } = req.body
     const { beachId } = req.params
 
     Beach
-        .findByIdAndUpdate(beachId, { name, coords, trasportCoords, length, composition, sectors })
+        .findByIdAndUpdate(beachId, { images, name, coords, transportCoords, length, composition, sectors })
         .then(updatedBeach => res.json(updatedBeach))
         .catch(err => next(err))
 })

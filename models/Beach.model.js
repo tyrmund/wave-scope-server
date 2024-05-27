@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose')
 
 const beachSchema = new Schema(
   {
-    image: {
+    images: {
       type: [String],
       required: [true, 'Please attach pictures of this beach']
     },
@@ -10,15 +10,24 @@ const beachSchema = new Schema(
       type: String,
       required: [true, 'Beach name is required']
     },
-    coords: {
-      type: { "lat": String, "lng": String },
-      required: [true, 'GPS Coordinates are required']
+    location: {
+      type: {
+        type: String
+      },
+      coordinates: {
+        type: [Number]
+      }
     },
     transportCoords: {
-      type: [{ String, String }]
+      type: {
+        type: String
+      },
+      coordinates: {
+        type: [[Number]]
+      }
     },
     length: {
-      type: String,
+      type: Number,
       required: [true, 'Length is required']
     },
     composition: {
@@ -33,5 +42,8 @@ const beachSchema = new Schema(
   {
     timestamps: true
   })
+
+beachSchema.index({ location: '2dsphere' })
+beachSchema.index({ transportCoords: '2dsphere' })
 
 module.exports = model('Beach', beachSchema)
