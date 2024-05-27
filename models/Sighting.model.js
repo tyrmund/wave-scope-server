@@ -2,6 +2,9 @@ const { Schema, model } = require('mongoose')
 
 const sightingSchema = new Schema(
   {
+    image: {
+      type: String
+    },
     coords: {
       type: {
         'lat': String,

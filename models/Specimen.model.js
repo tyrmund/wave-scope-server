@@ -2,6 +2,10 @@ const { Schema, model } = require('mongoose')
 
 const specimenSchema = new Schema(
   {
+    image: {
+      type: [String],
+      required: [true, 'Please attach a picture of this specimen']
+    },
     commonName: {
       type: String,
       required: [true, 'Name of specimen is required']
