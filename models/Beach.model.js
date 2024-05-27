@@ -8,24 +8,24 @@ const beachSchema = new Schema(
     },
     name: {
       type: String,
-      required: [true, 'Beach name is required']
+      required: [true, 'Beach name is required'],
     },
     location: {
       type: {
         type: String
       },
       coordinates: {
-        type: [Number]
-      }
+        type: [Number],
+        unique: true
+      },
     },
-    transportCoords: {
+    transportCoords: [{
       type: {
         type: String
-      },
-      coordinates: {
-        type: [[Number]]
+      }, coordinates: {
+        type: [Number]
       }
-    },
+    }],
     length: {
       type: Number,
       required: [true, 'Length is required']
