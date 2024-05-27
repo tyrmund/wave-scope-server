@@ -18,7 +18,7 @@ const beachSchema = new Schema(
       type: [{ String, String }]
     },
     length: {
-      type: String,
+      type: Number,
       required: [true, 'Length is required']
     },
     composition: {
