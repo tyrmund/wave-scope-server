@@ -10,12 +10,25 @@ const beachSchema = new Schema(
       type: String,
       required: [true, 'Beach name is required']
     },
-    coords: {
-      type: { "lat": String, "lng": String },
-      required: [true, 'GPS Coordinates are required']
+    location: {
+      type: {
+        type: String
+      },
+      coordinates: {
+        type: [Number]
+      }
     },
     transportCoords: {
+<<<<<<< HEAD
       type: [String]
+=======
+      type: {
+        type: String
+      },
+      coordinates: {
+        type: [[Number]]
+      }
+>>>>>>> 74c92ce87698addb71a310280632ca76d2c44e2f
     },
     length: {
       type: Number,
@@ -33,5 +46,8 @@ const beachSchema = new Schema(
   {
     timestamps: true
   })
+
+beachSchema.index({ location: '2dsphere' })
+beachSchema.index({ transportCoords: '2dsphere' })
 
 module.exports = model('Beach', beachSchema)

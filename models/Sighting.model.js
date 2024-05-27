@@ -14,12 +14,10 @@ const sightingSchema = new Schema(
     beach: {
       type: Schema.ObjectId,
       ref: 'Beach',
-      required: true
     },
     specimen: {
       type: Schema.ObjectId,
       ref: 'Specimen',
-      required: true
     },
     user: {
       type: Schema.ObjectId,
