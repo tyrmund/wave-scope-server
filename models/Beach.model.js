@@ -19,21 +19,14 @@ const beachSchema = new Schema(
         unique: true
       },
     },
-<<<<<<< HEAD
     transportCoords: {
-=======
-    transportCoords: [{
->>>>>>> paloma
       type: {
         type: String
-      }, coordinates: {
-        type: [Number]
+      },
+      coordinates: {
+        type: [[Number]]
       }
-<<<<<<< HEAD
     },
-=======
-    }],
->>>>>>> paloma
     length: {
       type: Number,
       required: [true, 'Length is required']
