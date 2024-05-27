@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose')
 
 const beachSchema = new Schema(
   {
-    image: {
+    images: {
       type: [String],
       required: [true, 'Please attach pictures of this beach']
     },
