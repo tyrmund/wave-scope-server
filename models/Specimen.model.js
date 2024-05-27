@@ -11,7 +11,8 @@ const specimenSchema = new Schema(
       required: [true, 'Name of specimen is required']
     },
     scientificName: {
-      type: String
+      type: String,
+      unique: true,
     },
     mediumSize: {
       type: String,

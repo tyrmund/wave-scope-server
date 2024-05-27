@@ -8,22 +8,39 @@ const beachSchema = new Schema(
     },
     name: {
       type: String,
-      required: [true, 'Beach name is required']
+      required: [true, 'Beach name is required'],
     },
-    coords: {
-      type: { "lat": String, "lng": String },
-      required: [true, 'GPS Coordinates are required']
+    location: {
+      type: {
+        type: String
+      },
+      coordinates: {
+        type: [Number],
+        unique: true
+      },
     },
+<<<<<<< HEAD
     transportCoords: {
-      type: [{ String, String }]
+=======
+    transportCoords: [{
+>>>>>>> paloma
+      type: {
+        type: String
+      }, coordinates: {
+        type: [Number]
+      }
+<<<<<<< HEAD
     },
+=======
+    }],
+>>>>>>> paloma
     length: {
       type: Number,
       required: [true, 'Length is required']
     },
     composition: {
       type: String,
-      enum: ["Sand", "Gravel", "Rock", "Shell"]
+      enum: ["Sand", "Gravel", "Rock", "Shell", "Sand and Rock", "Sand and Gravel", "Sand and Shell", "Gravel and Rock", "Gravel and Shell", "Rock and Shell"]
     },
     sectors: {
       type: Number,
@@ -33,5 +50,8 @@ const beachSchema = new Schema(
   {
     timestamps: true
   })
+
+beachSchema.index({ location: '2dsphere' })
+beachSchema.index({ transportCoords: '2dsphere' })
 
 module.exports = model('Beach', beachSchema)

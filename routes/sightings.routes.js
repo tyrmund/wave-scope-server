@@ -1,16 +1,17 @@
 const router = require('express').Router()
 
+const { isAuthenticated } = require('../middlewares/verifyToken')
 const Sighting = require('../models/Sighting.model')
 
-router.post('/', (req, res, next) => {
+router.post('/', isAuthenticated, (req, res, next) => {
 
-  const { coords, beach, specimen, user, comment, confirmations, rejections } = req.body
+  const { _id: user } = req.payload
+  const { coords, beach, specimen, comment, confirmations, rejections } = req.body
 
   Sighting
     .create({ coords, beach, specimen, user, comment, confirmations, rejections })
     .then(newSighting => res.json(newSighting))
     .catch(err => next(err))
-
 })
 
 router.get('/', (req, res, next) => {
@@ -22,14 +23,6 @@ router.get('/', (req, res, next) => {
     .catch(err => next(err))
 
 })
-
-
-//TO REVIEW
-// router.get('/search', (req, res, next) => {
-
-//   res.send(req.query)
-
-// })
 
 router.get('/:sightingId', (req, res, next) => {
 
@@ -43,10 +36,11 @@ router.get('/:sightingId', (req, res, next) => {
 
 })
 
-router.put('/:sightingId', (req, res, next) => {
+router.put('/:sightingId', isAuthenticated, (req, res, next) => {
 
   const { sightingId } = req.params
-  const { coords, beach, specimen, user, comment, confirmations, rejections } = req.body
+  const { _id: user } = req.payload
+  const { coords, beach, specimen, comment, confirmations, rejections } = req.body
 
   Sighting
     .findByIdAndUpdate(sightingId, { coords, beach, specimen, user, comment, confirmations, rejections })
