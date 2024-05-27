@@ -15,7 +15,7 @@ const beachSchema = new Schema(
       required: [true, 'GPS Coordinates are required']
     },
     transportCoords: {
-      type: [{ String, String }]
+      type: [String]
     },
     length: {
       type: Number,
