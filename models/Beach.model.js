@@ -22,8 +22,9 @@ const beachSchema = new Schema(
     transportCoords: {
       type: {
         type: String
-      }, coordinates: {
-        type: [Number]
+      },
+      coordinates: {
+        type: [[Number]]
       }
     },
     length: {
