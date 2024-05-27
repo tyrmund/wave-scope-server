@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose')
 
 const specimenSchema = new Schema(
   {
-    image: {
+    images: {
       type: [String],
       required: [true, 'Please attach a picture of this specimen']
     },
