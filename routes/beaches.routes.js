@@ -57,11 +57,11 @@ router.get("/:beachId", (req, res, next) => {
 
 router.put("/:beachId", (req, res, next) => {
 
-    const { images, name, coords, transportCoords, length, composition, sectors } = req.body
+    const { images, name, coords, nearBusStops, length, composition, sectors } = req.body
     const { beachId } = req.params
 
     Beach
-        .findByIdAndUpdate(beachId, { images, name, coords, transportCoords, length, composition, sectors })
+        .findByIdAndUpdate(beachId, { images, name, coords, nearBusStops, length, composition, sectors })
         .then(updatedBeach => res.json(updatedBeach))
         .catch(err => next(err))
 })
