@@ -18,17 +18,21 @@ const beachSchema = new Schema(
         type: [Number]
       }
     },
-    nearBusStops: [{
-      name: {
-        type: String
-      },
-      lines: {
-        type: [String]
-      },
-      coordinates: {
-        type: [Number]
-      }
-    }],
+    nearBusStops:
+      [{
+        type: {
+          type: String
+        },
+        name: {
+          type: String
+        },
+        lines: {
+          type: [String]
+        },
+        coordinates: {
+          type: [Number]
+        }
+      }],
     length: {
       type: Number,
       required: [true, 'Length is required']
