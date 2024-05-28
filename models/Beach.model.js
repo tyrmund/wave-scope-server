@@ -19,8 +19,12 @@ const beachSchema = new Schema(
       }
     },
     nearBusStops: [{
-      description: String,
-      lines: [String],
+      name: {
+        type: String
+      },
+      lines: {
+        type: [String]
+      },
       coordinates: {
         type: [Number]
       }
