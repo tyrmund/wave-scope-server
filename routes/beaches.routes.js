@@ -11,11 +11,11 @@ router.post("/", (req, res, next) => {
     coordinates: [longitude, latitude]
   }
 
-  const busStopPoints = busLocations.map(elm => {
+  const busStopPoints = nearBusStops.map(elm => {
     return (
       {
         type: 'Point',
-        coordinates: elm
+        ...elm
       }
     )
   })
