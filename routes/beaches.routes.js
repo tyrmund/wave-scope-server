@@ -11,17 +11,14 @@ router.post("/", (req, res, next) => {
     coordinates: [longitude, latitude]
   }
 
-  const busStopPoints = busLocations.map(elm => {
+  const busStopPoints = nearBusStops.map(elm => {
     return (
       {
         type: 'Point',
-        coordinates: elm
+        ...elm
       }
     )
   })
-
-
-  // res.send({ images, name, location, busStopLocation: busStopPoints, length, composition, sectors })
 
   Beach
     .create({ images, name, location, nearBusStops: busStopPoints, length, composition, sectors })
