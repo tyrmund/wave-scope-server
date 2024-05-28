@@ -20,9 +20,6 @@ const beachSchema = new Schema(
     },
     nearBusStops:
       [{
-        type: {
-          type: String
-        },
         name: {
           type: String
         },

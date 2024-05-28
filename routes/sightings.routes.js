@@ -38,7 +38,6 @@ router.get('/:sightingId', (req, res, next) => {
     .populate(['beach', 'specimen', 'user'])
     .then(oneSighting => res.json(oneSighting))
     .catch(err => next(err))
-
 })
 
 router.put('/:sightingId', isAuthenticated, (req, res, next) => {
@@ -69,7 +68,6 @@ router.delete('/:sightingId', (req, res, next) => {
     .findByIdAndDelete(sightingId)
     .then(() => res.sendStatus(204))
     .catch(err => next(err))
-
 })
 
 module.exports = router

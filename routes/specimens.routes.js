@@ -3,6 +3,7 @@ const router = require('express').Router()
 const Specimen = require('./../models/Specimen.model')
 
 router.post('/', (req, res, next) => {
+
   const { images, commonName, scientificName, mediumSize, isEndemic, habitat } = req.body
 
   Specimen
@@ -16,9 +17,9 @@ router.get('/', (req, res, next) => {
 
   Specimen
     .find()
+    // select
     .then(allSpecimens => res.json(allSpecimens))
     .catch(err => next(err))
-
 })
 
 router.get('/search', (req, res, next) => {
@@ -33,6 +34,7 @@ router.get('/search', (req, res, next) => {
 })
 
 router.get('/:specimenId', (req, res, next) => {
+
   const { specimenId } = req.params
 
   Specimen
@@ -54,6 +56,7 @@ router.put('/:specimenId', (req, res, next) => {
 })
 
 router.delete('/:specimenId', (req, res, next) => {
+
   const { specimenId } = req.params
 
   Specimen

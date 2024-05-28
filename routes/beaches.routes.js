@@ -11,17 +11,8 @@ router.post("/", (req, res, next) => {
     coordinates: [longitude, latitude]
   }
 
-  const busStopPoints = nearBusStops.map(elm => {
-    return (
-      {
-        type: 'Point',
-        ...elm
-      }
-    )
-  })
-
   Beach
-    .create({ images, name, location, nearBusStops: busStopPoints, length, composition, sectors })
+    .create({ images, name, location, nearBusStops, length, composition, sectors })
     .then(newBeach => res.status(201).json(newBeach))
     .catch(err => next(err))
 })
@@ -30,6 +21,7 @@ router.get("/", (req, res, next) => {
 
   Beach
     .find()
+    // select
     .then(allBeaches => res.json(allBeaches))
     .catch(err => next(err))
 })
@@ -42,7 +34,6 @@ router.get("/search", (req, res, next) => {
     .find({ name: { $regex: name, $options: 'i' } })
     .then(allFoundBeaches => res.json(allFoundBeaches))
     .catch(err => next(err))
-
 })
 
 router.get("/:beachId", (req, res, next) => {
