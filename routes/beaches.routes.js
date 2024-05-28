@@ -4,14 +4,14 @@ const Beach = require("../models/Beach.model")
 
 router.post("/", (req, res, next) => {
 
-    const { images, name, latitude, longitude, busLocations, length, composition, sectors } = req.body
+    const { images, name, latitude, longitude, nearBusStops, length, composition, sectors } = req.body
 
     const location = {
         type: 'Point',
         coordinates: [longitude, latitude]
     }
 
-    const busStopPoints = busLocations.map(elm => {
+    const busStopPoints = nearBusStops.map(elm => {
         return (
             {
                 type: 'Point',
@@ -23,7 +23,7 @@ router.post("/", (req, res, next) => {
     // res.send({ images, name, location, busStopLocation: busStopPoints, length, composition, sectors })
 
     Beach
-        .create({ images, name, location, busStops: busStopPoints, length, composition, sectors })
+        .create({ images, name, location, nearBusStops: busStopPoints, length, composition, sectors })
         .then(newBeach => res.status(201).json(newBeach))
         .catch(err => next(err))
 })
