@@ -18,10 +18,9 @@ const beachSchema = new Schema(
         type: [Number]
       }
     },
-    busStopCoords: [{
-      type: {
-        type: String
-      },
+    nearBusStops: [{
+      description: String,
+      lines: [String],
       coordinates: {
         type: [Number]
       }
@@ -44,6 +43,5 @@ const beachSchema = new Schema(
   })
 
 beachSchema.index({ location: '2dsphere' })
-beachSchema.index({ busStopCoords: '2dsphere' })
 
 module.exports = model('Beach', beachSchema)
