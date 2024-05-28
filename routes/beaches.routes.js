@@ -4,20 +4,24 @@ const Beach = require("../models/Beach.model")
 
 router.post("/", (req, res, next) => {
 
-    const { images, name, latitude, longitude, busStops, length, composition, sectors } = req.body
+    const { images, name, latitude, longitude, busStopCoords, length, composition, sectors } = req.body
 
     const location = {
         type: 'Point',
         coordinates: [longitude, latitude]
     }
 
-    const busStopCoordinates = {
-        type: 'MultiPoint',
-        coordinates: busStops
-    }
+    const busStopPoints = busStopCoords.map(elm => {
+        return (
+            {
+                type: 'Point',
+                coordinates: elm
+            }
+        )
+    })
 
     Beach
-        .create({ images, name, location, busStopCoords: busStopCoordinates, length, composition, sectors })
+        .create({ images, name, location, busStopCoords: busStopPoints, length, composition, sectors })
         .then(newBeach => res.status(201).json(newBeach))
         .catch(err => next(err))
 })
