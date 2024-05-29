@@ -41,6 +41,13 @@ const beachSchema = new Schema(
     sectors: {
       type: Number,
       default: 1
+    },
+    description: {
+      type: String,
+      required: [true, 'Please write a brief description of this beach']
+    },
+    services: {
+      type: [String]
     }
   },
   {
