@@ -25,6 +25,10 @@ const specimenSchema = new Schema(
     habitat: {
       type: String,
       enum: ['Air', 'Earth', 'Water']
+    },
+    description: {
+      type: String,
+      required: [true, 'Please write a description of this specimen']
     }
   },
   {
