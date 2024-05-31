@@ -1,10 +1,11 @@
 const router = require("express").Router()
+const { isAuthenticated } = require('../middlewares/verifyToken')
 
 const Beach = require("../models/Beach.model")
 
-router.post("/", (req, res, next) => {
+router.post("/", isAuthenticated, (req, res, next) => {
 
-  const { images, name, latitude, longitude, nearBusStops, length, composition, sectors } = req.body
+  const { images, name, latitude, longitude, nearBusStops, length, composition, sectors, description, services } = req.body
 
   const location = {
     type: 'Point',
@@ -12,7 +13,7 @@ router.post("/", (req, res, next) => {
   }
 
   Beach
-    .create({ images, name, location, nearBusStops, length, composition, sectors })
+    .create({ images, name, location, nearBusStops, length, composition, sectors, description, services })
     .then(newBeach => res.status(201).json(newBeach))
     .catch(err => next(err))
 })
@@ -48,11 +49,11 @@ router.get("/:beachId", (req, res, next) => {
 
 router.put("/:beachId", (req, res, next) => {
 
-  const { images, name, coords, nearBusStops, length, composition, sectors } = req.body
+  const { images, name, coords, nearBusStops, length, composition, sectors, description, services } = req.body
   const { beachId } = req.params
 
   Beach
-    .findByIdAndUpdate(beachId, { images, name, coords, nearBusStops, length, composition, sectors })
+    .findByIdAndUpdate(beachId, { images, name, coords, nearBusStops, length, composition, sectors, description, services })
     .then(updatedBeach => res.json(updatedBeach))
     .catch(err => next(err))
 })
