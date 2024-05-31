@@ -1,13 +1,15 @@
 const router = require('express').Router()
 
+const { isAuthenticated } = require('../middlewares/verifyToken')
 const Specimen = require('./../models/Specimen.model')
 
-router.post('/', (req, res, next) => {
+router.post('/', isAuthenticated, (req, res, next) => {
 
+  const { _id: user } = req.payload
   const { images, commonName, scientificName, mediumSize, isEndemic, habitat, description } = req.body
 
   Specimen
-    .create({ images, commonName, scientificName, mediumSize, isEndemic, habitat, description })
+    .create({ user, images, commonName, scientificName, mediumSize, isEndemic, habitat, description })
     .then(newSpecimen => res.status(201).json(newSpecimen))
     .catch(err => next(err))
 })
@@ -43,13 +45,14 @@ router.get('/:specimenId', (req, res, next) => {
     .catch(err => next(err))
 })
 
-router.put('/:specimenId', (req, res, next) => {
+router.put('/:specimenId', isAuthenticated, (req, res, next) => {
 
   const { specimenId } = req.params
+  const { _id: user } = req.payload
   const { images, commonName, scientificName, mediumSize, isEndemic, habitat, description } = req.body
 
   Specimen
-    .findByIdAndUpdate(specimenId, { images, commonName, scientificName, mediumSize, isEndemic, habitat, description })
+    .findByIdAndUpdate(specimenId, { user, images, commonName, scientificName, mediumSize, isEndemic, habitat, description })
     .then(updatedSpecimen => res.json(updatedSpecimen))
     .catch(err => next(err))
 
