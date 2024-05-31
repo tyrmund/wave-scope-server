@@ -36,7 +36,7 @@ const beachSchema = new Schema(
     },
     composition: {
       type: String,
-      enum: ["Sand", "Gravel", "Rock", "Shell", "Sand and Rock", "Sand and Gravel", "Sand and Shell", "Gravel and Rock", "Gravel and Shell", "Rock and Shell"]
+      enum: ["Sand", "Gravel", "Rock", "Shell", "Sand & Rock", "Sand & Gravel", "Sand & Shell", "Gravel & Rock", "Gravel & Shell", "Rock & Shell"]
     },
     sectors: {
       type: Number,
