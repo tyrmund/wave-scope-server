@@ -12,4 +12,7 @@ module.exports = app => {
     const sightingRouter = require('./sightings.routes')
     app.use('/api/sightings', sightingRouter)
 
+    const uploadRouter = require('./upload.routes')
+    app.use('/upload', uploadRouter)
+
 }
