@@ -57,12 +57,13 @@ In the global context of a massive tourism, WaveScope tries to reduce the ecolog
   Auth Routes
 ```
 
-| HTTP Verb  | URL              | Request Body |  Action                 |
-| :--------  | :-------         | :----------- | :---------              |
-| `POST`     | `/signup`        |              | Creates a new user      |
-| `POST`     | `/login`         |              | Logs an existing user   |
-| `GET`      | `/verify`        |              | Verify auth token       |
-| `PUT`      | `/edit/:userId`  |              | Edits an existing user  |
+| HTTP Verb  | URL                | Request Body |  Action                 |
+| :--------  | :-------           | :----------- | :---------              |
+| `POST`     | `/signup`          |              | Creates a new user      |
+| `POST`     | `/login`           |              | Logs an existing user   |
+| `GET`      | `/verify`          |              | Verify auth token       |
+| `GET`      | `/profile/:userId` |              | Brings an existing user |
+| `PUT`      | `/edit/:userId`    |              | Edits an existing user  |
 
 
 ## Authors
