@@ -2,8 +2,8 @@ const { Schema, model } = require('mongoose')
 
 const sightingSchema = new Schema(
   {
-    image: {
-      type: String
+    images: {
+      type: [String]
     },
     location: {
       type: {

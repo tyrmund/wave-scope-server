@@ -6,7 +6,7 @@ const Sighting = require('../models/Sighting.model')
 router.post('/', isAuthenticated, (req, res, next) => {
 
   const { _id: user } = req.payload
-  const { image, latitude, longitude, beach, specimen, comment, confirmations, rejections } = req.body
+  const { images, latitude, longitude, beach, specimen, comment, confirmations, rejections } = req.body
 
   const location = {
     type: "Point",
@@ -14,7 +14,7 @@ router.post('/', isAuthenticated, (req, res, next) => {
   }
 
   Sighting
-    .create({ image, location, beach, specimen, user, comment, confirmations, rejections })
+    .create({ images, location, beach, specimen, user, comment, confirmations, rejections })
     .then(newSighting => res.json(newSighting))
     .catch(err => next(err))
 })
@@ -44,7 +44,7 @@ router.put('/:sightingId', isAuthenticated, (req, res, next) => {
 
   const { sightingId } = req.params
   const { _id: user } = req.payload
-  const { image, latitude, longitude, beach, specimen, comment, confirmations, rejections } = req.body
+  const { images, latitude, longitude, beach, specimen, comment, confirmations, rejections } = req.body
 
   const location = {
     type: "Point",
@@ -52,7 +52,7 @@ router.put('/:sightingId', isAuthenticated, (req, res, next) => {
   }
 
   Sighting
-    .findByIdAndUpdate(sightingId, { image, location, beach, specimen, user, comment, confirmations, rejections })
+    .findByIdAndUpdate(sightingId, { images, location, beach, specimen, user, comment, confirmations, rejections })
     .populate(['beach', 'specimen', 'user'])
     .then(updatedSighting => res.json(updatedSighting))
     .catch(err => next(err))
