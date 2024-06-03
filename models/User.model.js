@@ -29,6 +29,10 @@ const userSchema = new Schema(
     profilePic: {
       type: String,
       default: 'https://res.cloudinary.com/dtetsfefb/image/upload/v1716733834/logo_default_gvqpb4.png'
+    },
+    role: {
+      type: String,
+      default: "user"
     }
   },
   {
