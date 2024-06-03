@@ -26,8 +26,11 @@ const beachSchema = new Schema(
         lines: {
           type: [String]
         },
-        coordinates: {
-          type: [Number]
+        longitude: {
+          type: String
+        },
+        latitude: {
+          type: String
         }
       }],
     length: {
