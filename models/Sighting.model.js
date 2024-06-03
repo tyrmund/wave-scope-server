@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose')
 const sightingSchema = new Schema(
   {
     images: {
-      type: [String]
+      type: [String],
+      default: ["https://res.cloudinary.com/dc7ycwd1u/image/upload/v1717426324/Anadir_un_titulo_nrrbmv.png"]
     },
     location: {
       type: {
