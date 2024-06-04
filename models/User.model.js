@@ -28,7 +28,7 @@ const userSchema = new Schema(
     },
     profilePic: {
       type: String,
-      default: 'https://res.cloudinary.com/dtetsfefb/image/upload/v1716733834/logo_default_gvqpb4.png'
+      default: 'https://res.cloudinary.com/dc7ycwd1u/image/upload/v1717428275/Anadir_un_titulo_2_zruph6.png'
     },
     role: {
       type: String,
