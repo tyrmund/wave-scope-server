@@ -1,5 +1,8 @@
 const router = require('express').Router()
 
+const mongoose = require('mongoose')
+const { ObjectId } = mongoose.Types
+
 const { isAuthenticated } = require('../middlewares/verifyToken')
 const Sighting = require('../models/Sighting.model')
 
@@ -43,6 +46,23 @@ router.get('/sightingsByBeach/:beachId', (req, res, next) => {
     .catch(err => next(err))
 
 })
+
+/*router.get('/specimensByBeach/:beachId', (req, res, next) => {
+
+  const { beachId } = req.params
+
+  const beachObjectId = new ObjectId(beachId)
+
+  const pipeline = [
+    { $match: { beach: beachObjectId } },
+    { $group: { _id: '$specimen._id' } }
+  ]
+
+  Sighting.aggregate(pipeline)
+    .then(sightings => res.json(sightings))
+    .catch(err => next(err))
+
+})*/
 
 router.get('/:sightingId', (req, res, next) => {
 
