@@ -89,4 +89,40 @@ router.post('/:sightingId/confirmation', isAuthenticated, (req, res, next) => {
 
 })
 
+router.delete('/:sightingId/confirmation', isAuthenticated, (req, res, next) => {
+
+  const { sightingId } = req.params
+  const { _id: user } = req.payload
+
+  Sighting
+    .findByIdAndUpdate(sightingId, { $pull: { confirmations: user } })
+    .then(updatedConfirmations => res.json(updatedConfirmations))
+    .catch(err => next(err))
+
+})
+
+router.post('/:sightingId/rejection', isAuthenticated, (req, res, next) => {
+
+  const { sightingId } = req.params
+  const { _id: user } = req.payload
+
+  Sighting
+    .findByIdAndUpdate(sightingId, { $push: { rejections: user } })
+    .then(updatedRejections => res.json(updatedRejections))
+    .catch(err => next(err))
+
+})
+
+router.delete('/:sightingId/rejection', isAuthenticated, (req, res, next) => {
+
+  const { sightingId } = req.params
+  const { _id: user } = req.payload
+
+  Sighting
+    .findByIdAndUpdate(sightingId, { $pull: { rejections: user } })
+    .then(updatedRejections => res.json(updatedRejections))
+    .catch(err => next(err))
+
+})
+
 module.exports = router
