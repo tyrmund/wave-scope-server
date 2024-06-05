@@ -40,14 +40,18 @@ In the global context of a massive tourism, WaveScope tries to reduce the ecolog
   Sightings routes / endpoints
 ```
 
-| HTTP Verb | URL                       | Request Body   |  Action                |
-| :-------- | :-------                  | :------------- | :---------             |
-| `POST`    | `/sightings`              |      JSON      | Creates a new sighting |
-| `GET `    | `/sightings`              |                | Bring all sightings    |
-| `GET`     | `/sightings/:sightingId`  |                | Brings one sighting    |
-| `GET`     | `/sightings/search`       |                | Search sightings       |
-| `PUT`     | `/sightings/:sightingId`  |      JSON      | Edit one sighting      |
-| `DELETE`  | `/sightings/:sightingId`  |                | Delete one sighting    |
+| HTTP Verb | URL                                   | Request Body   |  Action                             |
+| :-------- | :-------                              | :------------- | :---------                          |
+| `POST`    | `/sightings`                          |      JSON      | Creates a new sighting              |
+| `GET `    | `/sightings`                          |                | Bring all sightings                 |
+| `GET`     | `/sightings/:sightingId`              |                | Brings one sighting                 |
+| `GET`     | `/sightings/search`                   |                | Search sightings                    |
+| `PUT`     | `/sightings/:sightingId`              |      JSON      | Edit one sighting                   |
+| `DELETE`  | `/sightings/:sightingId`              |                | Delete one sighting                 |
+| `POST`    | `/sightings/:sightingId/confirmation` |      JSON      | Give a confirmation to a sighting   |
+| `DELETE`  | `/sightings/:sightingId/confirmation` |      JSON      | Remove a confirmation to a sighting |
+| `POST`    | `/sightings/:sightingId/rejection`    |      JSON      | Give a rejection to a sighting      |
+| `DELETE`  | `/sightings/:sightingId/rejection`    |      JSON      | Remove a rejection to a sighting    |
 
 
 

@@ -33,12 +33,14 @@ const sightingSchema = new Schema(
       type: String
     },
     confirmations: {
-      type: Number,
-      default: 0
+      type: [Schema.ObjectId],
+      ref: 'User',
+      default: []
     },
     rejections: {
-      type: Number,
-      default: 0
+      type: [Schema.ObjectId],
+      ref: 'User',
+      default: []
     }
   },
   {
