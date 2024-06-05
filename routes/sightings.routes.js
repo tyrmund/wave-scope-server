@@ -19,10 +19,16 @@ router.post('/', isAuthenticated, (req, res, next) => {
     .catch(err => next(err))
 })
 
+
+
 router.get('/', (req, res, next) => {
+
+  const { totalItems } = req.query
 
   Sighting
     .find()
+    .sort({ createdAt: -1 })
+    .limit(totalItems)
     .populate(['beach', 'specimen', 'user'])
     .then(allSightings => res.json(allSightings))
     .catch(err => next(err))
