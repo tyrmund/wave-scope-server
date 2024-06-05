@@ -39,7 +39,7 @@ router.get('/sightingsByBeach/:beachId', (req, res, next) => {
 
   Sighting
     .find({ beach: { $eq: beachId } })
-    .then(specimensByBeach => res.json(specimensByBeach))
+    .then(sightingsByBeach => res.json(sightingsByBeach))
     .catch(err => next(err))
 
 })
