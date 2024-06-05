@@ -19,8 +19,6 @@ router.post('/', isAuthenticated, (req, res, next) => {
     .catch(err => next(err))
 })
 
-
-
 router.get('/', (req, res, next) => {
 
   const { totalItems } = req.query
@@ -31,6 +29,17 @@ router.get('/', (req, res, next) => {
     .limit(totalItems)
     .populate(['beach', 'specimen', 'user'])
     .then(allSightings => res.json(allSightings))
+    .catch(err => next(err))
+
+})
+
+router.get('/sightingsByBeach/:beachId', (req, res, next) => {
+
+  const { beachId } = req.params
+
+  Sighting
+    .find({ beach: { $eq: beachId } })
+    .then(specimensByBeach => res.json(specimensByBeach))
     .catch(err => next(err))
 
 })
@@ -65,7 +74,6 @@ router.put('/:sightingId', isAuthenticated, (req, res, next) => {
 
 })
 
-
 router.delete('/:sightingId', (req, res, next) => {
 
   const { sightingId } = req.params
@@ -75,7 +83,6 @@ router.delete('/:sightingId', (req, res, next) => {
     .then(() => res.sendStatus(204))
     .catch(err => next(err))
 })
-
 
 router.post('/:sightingId/confirmation', isAuthenticated, (req, res, next) => {
 
