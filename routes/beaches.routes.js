@@ -22,7 +22,6 @@ router.get("/", (req, res, next) => {
 
   Beach
     .find()
-    // select
     .then(allBeaches => res.json(allBeaches))
     .catch(err => next(err))
 })
