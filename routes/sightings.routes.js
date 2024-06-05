@@ -70,4 +70,17 @@ router.delete('/:sightingId', (req, res, next) => {
     .catch(err => next(err))
 })
 
+
+router.post('/:sightingId/confirmation', isAuthenticated, (req, res, next) => {
+
+  const { sightingId } = req.params
+  const { _id: user } = req.payload
+
+  Sighting
+    .findByIdAndUpdate(sightingId, { $push: { confirmations: user } })
+    .then(updatedConfirmations => res.json(updatedConfirmations))
+    .catch(err => next(err))
+
+})
+
 module.exports = router
